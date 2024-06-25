@@ -108,7 +108,7 @@ const Body = () => {
   const RestaurantCardPromoted = withPromotedlebel(RestaurantCard);
   const onlineStatus = useOnlineStatus();
 
-  const { loggedInUser, setUserName } = useContext(UserContext);
+  const { loggedInUser, setuserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -134,7 +134,7 @@ const Body = () => {
 
   return listofRestaurant.length === 0 ? <Shimmer /> : (
     <>
-      <div className="body mt-10">
+      <div className="mt-10">
         <div className="flex items-center gap-10 ml-5">
           <div className="search">
             <button
@@ -171,7 +171,7 @@ const Body = () => {
               type="text"
               className="border-2 rounded-lg m-2 text-center text-xl focus:border-0 focus:border-blue-600 focus:bg-blue-100"
               value={loggedInUser}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={(e) => setuserName(e.target.value)}
             />
           </div>
         </div>

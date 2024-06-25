@@ -12,6 +12,7 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
 // import Grocery from "./components/Grocery";
 // chunking
 // code bundeling
@@ -72,6 +73,10 @@ const appRouter=createBrowserRouter([
             {
                 path:"/cart",
                 element:<Cart/>
+            },
+            {
+                path:'/login',
+                element:<Login/>
             }
         ],
         errorElement:<Error/>

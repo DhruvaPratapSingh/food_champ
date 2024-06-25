@@ -44,7 +44,7 @@ const Header=()=>{
                 <li className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600"><Link to="/cart">
                 <sup>({cartitems.length})<FaCartShopping /></sup></Link></li>
                 <li className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600">{loggedInUser}</li>
-               <li className="" > <button className=" font-sans border border-black rounded-lg text-2xl h-8 w-20 bg-red-500 cursor-pointer text-center font-normal focus:bg-green-500" onClick={handleButtonClick}>{btntext}</button>
+               <li className="" > <Link to="/login"><button className=" font-sans border border-black rounded-lg text-2xl h-8 w-20 bg-red-500 cursor-pointer text-center font-normal focus:bg-green-500" onClick={handleButtonClick}>{btntext}</button></Link>
 
                </li>
             </ul>

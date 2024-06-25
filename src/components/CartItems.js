@@ -1,13 +1,13 @@
 import React from 'react'
 import { CDN_URL } from '../utils/constant'
 import { useDispatch } from 'react-redux'
-import { addItem } from '../utils/cardSlice';
+import {removeItem } from '../utils/cardSlice';
 const ItemList = ({items}) => {
     // console.log(items);
     const dispatch=useDispatch();
-    const handleadditem=(item)=>{
+    const handleremoveitem=(item)=>{
       // dispatch an action
-      dispatch(addItem(item))
+      dispatch(removeItem(item))
     }
   return (
     <div className='border-b-2  ml-4'>
@@ -23,7 +23,7 @@ const ItemList = ({items}) => {
             </div>
           <div className='w-3/12 p-4'>
           <div className='absolute'>
-          <button className='p-1 rounded-lg text-xl bg-green-400 active:bg-blue-700' onClick={()=>handleadditem(item)}>add+</button>
+          <button className='p-1 rounded-lg text-xl bg-slate-200 text-blue-600 active:bg-red-400' onClick={()=>handleremoveitem(item)}>remove</button>
           </div>
           <img className='w-full  rounded-md' src={CDN_URL+item?.card?.info?.imageId} 
           />
