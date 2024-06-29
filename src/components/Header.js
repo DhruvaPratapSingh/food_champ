@@ -6,6 +6,7 @@ import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { SignedOut,SignInButton,SignedIn,SignUpButton,UserButton } from "@clerk/clerk-react";
 const Header=()=>{
     const [btntext,setbtntext]=useState("Login");
     const onlineStatus=useOnlineStatus();
@@ -28,9 +29,6 @@ const Header=()=>{
             <img className="w-[150px] h-full object-cover" src={LOGO_URL}/>
            </div>
            <div className="w-9/12 text-[24px]  m-4">
-           <div className="sm:hidden" onClick={handleMenuToggle}>
-                    {menuOpen ? <FaTimes /> : <FaBars />}
-                </div>
             <ul className={`flex flex-row justify-between sm:flex-row sm:items-center sm:space-x-1 my-6 ${menuOpen ? "flex" : "hidden"} sm:flex`}>
             <li className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600">
                 Online status:{
@@ -44,7 +42,20 @@ const Header=()=>{
                 <li className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600"><Link to="/cart">
                 <sup>({cartitems.length})<FaCartShopping /></sup></Link></li>
                 <li className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600">{loggedInUser}</li>
-               <li className="" > <Link to="/login"><button className=" font-sans border border-black rounded-lg text-2xl h-8 w-20 bg-red-500 cursor-pointer text-center font-normal focus:bg-green-500" onClick={handleButtonClick}>{btntext}</button></Link>
+               <li className="" >
+                <header>
+    <div className="flex items-center flex-wrap text-sm md:text-lg ">
+    <SignedOut>
+      <SignInButton className="bg-slate-500 rounded-2xl m-2 p-2 hover:text-white hover:bg-red-500 font-medium" />
+      <SignUpButton className="bg-slate-500  rounded-2xl m-2 p-2 hover:text-white hover:bg-green-300 font-medium"/>
+    </SignedOut>
+    </div>
+    <div>
+    <SignedIn >
+      <UserButton />
+    </SignedIn>
+    </div>
+  </header>
 
                </li>
             </ul>

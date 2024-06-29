@@ -7,18 +7,18 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { Shimmer } from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
-import Login from "./components/Login";
+import { ClerkProvider} from "@clerk/clerk-react";
 // import Grocery from "./components/Grocery";
 // chunking
 // code bundeling
 // code splitting
 // lazy loading
-
+// const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const PUBLISHABLE_KEY ="pk_test_Y2VydGFpbi1yZWRmaXNoLTQwLmNsZXJrLmFjY291bnRzLmRldiQ";
 const Grocery = lazy(()=> import("./components/Grocery"));
 const AppLayout = () => {
     const [userName,setuserName]=useState();
@@ -47,7 +47,8 @@ const appRouter=createBrowserRouter([
         children:[
                 {
                 path:'/',
-                element:<Body/>
+                element:
+                    <Body/>
                 },
                {
                 path:'/about',
@@ -68,15 +69,20 @@ const appRouter=createBrowserRouter([
                },
             {
                 path:'restaurants/:resid',
-                element:<RestaurantMenu/>
+                element:
+                    <RestaurantMenu/>
+               
             },
             {
                 path:"/cart",
-                element:<Cart/>
+                element: 
+                    <Cart/>
             },
             {
                 path:'/login',
-                element:<Login/>
+                // element:
+                // <Login/>
+
             }
         ],
         errorElement:<Error/>
@@ -84,6 +90,12 @@ const appRouter=createBrowserRouter([
 // Ensure you have the correct import for createRoot
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<RouterProvider
-    router={appRouter}/>
+root.render(
+    <React.StrictMode>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <RouterProvider
+     router={appRouter}/>
+    </ClerkProvider>
+  </React.StrictMode>,
+    
 );

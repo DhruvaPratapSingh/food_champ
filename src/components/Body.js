@@ -175,10 +175,10 @@ const Body = () => {
             />
           </div>
         </div>
-        <div className="flex flex-wrap">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-14 justify-center m-4 items-center">
           {filteredRestaurants.map((restaurant) => (
             <Link
-              className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600"
+              className="hover:bg-blue-100 hover:shadow-2xl rounded-lg text-center py-1 px-2 shadow-xl hover:border-b-2 hover:border-blue-600 flex items-center justify-center"
               key={restaurant.info.id}
               to={"restaurants/" + restaurant.info.id}
             >
